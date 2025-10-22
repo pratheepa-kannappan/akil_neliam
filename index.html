@@ -20,19 +20,318 @@
       flex-direction: column;
       min-height: 100vh;
     }
+
+    /* --- Styles --- */
+    .header {
+      background-color: #ffffff;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #0D2F4B;
+    }
+    .nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .nav-link {
+      text-decoration: none;
+      color: #4A5568;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .user-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .role-selector {
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #CBD5E1;
+      background-color: #fff;
+      font-size: 0.9rem;
+    }
+    .add-property-button {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #F97316;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      background-color: #F1F5F9;
+    }
+    .hero-title {
+      font-size: 2.5rem;
+      color: #0D2F4B;
+      margin-bottom: 1rem;
+    }
+    .search-container {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .search-input {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      width: 400px;
+      max-width: 80%;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+    }
+    .search-button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #F97316;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .listings-container {
+      padding: 2rem;
+    }
+    .listings-title {
+        font-size: 2rem;
+        color: #0D2F4B;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    .listings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .property-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      cursor: pointer;
+    }
+    .property-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+    .property-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .property-info {
+      padding: 1.5rem;
+    }
+    .property-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1E293B;
+    }
+    .property-address {
+      font-size: 1rem;
+      color: #4A5568;
+      margin: 0.5rem 0 1rem;
+    }
+    .property-details {
+      display: flex;
+      gap: 1rem;
+      color: #4A5568;
+      border-top: 1px solid #e0e0e0;
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .filter-button {
+      padding: 0.6rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #4A5568;
+      background-color: #fff;
+      border: 1px solid #CBD5E1;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+    .active-filter {
+      color: #ffffff;
+      background-color: #F97316;
+      border-color: #F97316;
+    }
+    .footer {
+      background-color: #0D2F4B;
+      color: #ffffff;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: auto;
+    }
   </style>
 <script type="importmap">
 {
   "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0"
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
   }
 }
 </script>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="module" src="index.tsx"></script>
+  <div id="root">
+    <header class="header">
+      <div class="logo">Akil Neliam</div>
+      <nav class="nav">
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Properties</a>
+        <a href="#" class="nav-link">Rent</a>
+        <a href="#" class="nav-link">Sell</a>
+        <div class="user-controls">
+          <select class="role-selector" aria-label="Select user role">
+            <option value="customer">Customer</option>
+            <option value="admin">Admin</option>
+          </select>
+          <button class="add-property-button">Add Property</button>
+        </div>
+      </nav>
+    </header>
+    
+    <section class="hero">
+        <h1 class="hero-title">Find Your Dream Place</h1>
+        <p style="color: #4A5568;">Search for properties by address, city, or pincode.</p>
+        <div class="search-container">
+            <input
+                type="text"
+                placeholder="Enter a locality or city..."
+                class="search-input"
+                aria-label="Search for a property"
+            />
+            <button class="search-button" aria-label="Submit search">Search</button>
+        </div>
+    </section>
+
+    <main class="listings-container">
+        <h2 class="listings-title">Featured Listings</h2>
+        <div class="filter-container">
+            <button class="filter-button active-filter">All</button>
+            <button class="filter-button">House</button>
+            <button class="filter-button">Land</button>
+            <button class="filter-button">Farm</button>
+        </div>
+        <div class="listings-grid">
+            <!-- Property 1 -->
+            <div class="property-card">
+              <img src="https://images.pexels.com/photos/1115804/pexels-photo-1115804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="View of ECR, Chennai, Tamil Nadu" class="property-image">
+              <div class="property-info">
+                <div class="property-price">₹3,50,00,000</div>
+                <p class="property-address">ECR, Chennai, Tamil Nadu</p>
+                <div class="property-details">
+                  <span><strong>4</strong> Beds</span>
+                  <span><strong>5</strong> Baths</span>
+                  <span><strong>3,200</strong> sqft</span>
+                </div>
+              </div>
+            </div>
+            <!-- Property 2 -->
+            <div class="property-card">
+              <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="View of R.S. Puram, Coimbatore, Tamil Nadu" class="property-image">
+              <div class="property-info">
+                <div class="property-price">₹2,80,00,000</div>
+                <p class="property-address">R.S. Puram, Coimbatore, Tamil Nadu</p>
+                <div class="property-details">
+                  <span><strong>5</strong> Beds</span>
+                  <span><strong>6</strong> Baths</span>
+                  <span><strong>4,800</strong> sqft</span>
+                </div>
+              </div>
+            </div>
+            <!-- Property 3 -->
+            <div class="property-card">
+              <img src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="View of Kodaikanal, Tamil Nadu" class="property-image">
+              <div class="property-info">
+                <div class="property-price">₹1,95,00,000</div>
+                <p class="property-address">Kodaikanal, Tamil Nadu</p>
+                <div class="property-details">
+                  <span><strong>3</strong> Beds</span>
+                  <span><strong>4</strong> Baths</span>
+                  <span><strong>2,900</strong> sqft</span>
+                </div>
+              </div>
+            </div>
+            <!-- Property 5 -->
+            <div class="property-card">
+              <img src="https://images.pexels.com/photos/1029615/pexels-photo-1029615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="View of OMR, Chennai, Tamil Nadu" class="property-image">
+              <div class="property-info">
+                <div class="property-price">₹95,00,000</div>
+                <p class="property-address">OMR, Chennai, Tamil Nadu</p>
+                <div class="property-details">
+                  <span><strong>2,400</strong> sqft</span>
+                </div>
+              </div>
+            </div>
+            <!-- Property 6 -->
+            <div class="property-card">
+              <img src="https://images.pexels.com/photos/247597/pexels-photo-247597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="View of Pollachi, Coimbatore, Tamil Nadu" class="property-image">
+              <div class="property-info">
+                <div class="property-price">₹4,25,00,000</div>
+                <p class="property-address">Pollachi, Coimbatore, Tamil Nadu</p>
+                <div class="property-details">
+                  <span><strong>4,35,600</strong> sqft</span>
+                </div>
+              </div>
+            </div>
+            <!-- Property 7 -->
+            <div class="property-card">
+              <img src="https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="View of Saravanampatti, Coimbatore, Tamil Nadu" class="property-image">
+              <div class="property-info">
+                <div class="property-price">₹75,00,000</div>
+                <p class="property-address">Saravanampatti, Coimbatore, Tamil Nadu</p>
+                <div class="property-details">
+                  <span><strong>1,800</strong> sqft</span>
+                </div>
+              </div>
+            </div>
+             <!-- Property 8 -->
+            <div class="property-card">
+              <img src="https://images.pexels.com/photos/265216/pexels-photo-265216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="View of Near Madurai, Tamil Nadu" class="property-image">
+              <div class="property-info">
+                <div class="property-price">₹2,10,00,000</div>
+                <p class="property-address">Near Madurai, Tamil Nadu</p>
+                <div class="property-details">
+                  <span><strong>2,17,800</strong> sqft</span>
+                </div>
+              </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Akil Neliam. All rights reserved.</p>
+    </footer>
+  </div>
 </body>
 </html>
