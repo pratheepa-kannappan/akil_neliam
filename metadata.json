@@ -1,0 +1,7 @@
+{
+  "description": "A modern real estate application to find your next home.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "name": "Akil Neliam"
+}
